@@ -1,0 +1,50 @@
+use club_de_la_mortal; 
+
+/* datos de la tabla de clases */
+
+insert into clases (clase, horario, dia, profesor) values
+					("entrenamiento acrobatico", 18, "martes", "mauro");
+insert into clases (clase, horario, dia, profesor) values
+					("verticales", 19, "lunes", "lourdes");
+insert into clases (clase, horario, dia, profesor) values
+                    ("acrobacia", 17, "miercoles", "federico");
+insert into clases (clase, horario, dia, profesor) values
+					("acrobacia avanzados", 15, "jueves", "federico");
+insert into clases (clase, horario, dia, profesor) values
+					("danza", 18, "viernes", "juana");
+                    
+/*datos de la tabla de precios*/
+
+insert into precios (abono_1_clase) value (4400);
+insert into precios (abono_2_clases) value (6400);
+insert into precios(abono_3_clases) value (8200);
+insert into precios (abono_4_clases) value (9600);
+insert into precios (clase_suelta) value (1200);
+insert into precios (seminario) value (3000);
+
+/* datos de tabla de profesores */
+
+insert into profesores (nombre, dni, email, clase, tel) values
+						("mauro", 29543124, "mauro@elclub.com", "entrenamiento acorbatico", 1134567899);
+insert into profesores (nombre, dni, email, clase, tel) values
+						("lourdes", 37456789, "lourdes@elclub.com", "verticales", 1145678932);
+insert into profesores (nombre, dni, email, clase, tel) values
+						("federico", 37458679, "fede@elclub.com", "acrobacia", 1123457890);
+insert into profesores (nombre, dni, email, clase, tel) values
+						("federico", 37458679, "fede@elclub.com", "acrobacia avanzados", 1123457890);
+insert into profesores (nombre, dni, email, clase, tel) values
+						("juana", 39768543, "juana@elclub.com", "danza", 1129087888);
+
+/*datos de la tabla de seminarios*/
+
+insert into seminarios (seminario, dia, horario, profesor, precio) values
+						("verticales", "sabado", 11, "lourdes", 3000);
+                        
+/*datos de la tabla de alumnos*/
+
+insert into alumnos (nombre, dni, tel, email, abono, clase, profesor) values
+					("pablo",32532605, 1131376643, 4400, "entrenamiento acrobatico", "mauro");
+insert into alumnos (nombre, dni, tel, email, abono, clase, profesor) values
+					("pedro", 34547603, 1145678900, 4400, "verticales", "lourdes");
+insert into alumnos (nombre, dni, tel, email, abono, clase, profesor) values
+				    ("maria", 39008954, 1169375109, 4400, "acrobacia", "federico"); 
