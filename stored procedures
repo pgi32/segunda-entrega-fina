@@ -1,0 +1,27 @@
+use club_de_la_mortal;
+
+
+-- SP para saber que seminarios hay
+delimiter $$
+create procedure nombre_de_seminarios ()
+begin 
+	select 
+    *
+    from seminarios
+end
+$$;  
+call nombre_de_seminarios;
+
+-- SP para saber que cantidad de alumnos van al club
+
+delimiter $$
+create procedure sp_cuantos_alumnos_hay (out total_alumnos INT)
+begin 
+	select
+    count(*)
+    into total_alumnos
+    from alumnos
+end
+$$ ; 
+call sp_cuantos_alumnos_hay(@total)
+select @total
