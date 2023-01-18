@@ -1,0 +1,84 @@
+/*usar esquema*/
+use club_de_la_mortal;
+
+/*Tablas*/
+-- Creacion de tablas
+
+create table clases (
+					clase varchar (60) not null primary key,
+                    horario time not null,
+                    dia varchar (60) not null,
+                    profesor varchar (60) not null
+                    );
+                    
+-- creacio de clave foranea de clases
+alter table clases add constraint fk1_clases foreign key (profesor)
+references profesores (nombre);
+
+/*tabla de precios*/
+-- aca hice una modificacion con respecto a la tabla de la primera entrega y el precio lo puse por abonos y al seminario le puse su precio por sepaarado
+
+create table precios (
+					abono_1_clase float not null,
+                    abono_2_clases float not null,
+                    abono_3_clases float not null,
+                    abono_4_clases float not null,
+                    clase_suelta float not null,
+                    seminario float not null 
+                    
+                    );
+                    
+-- creacion de claves primarias
+alter table precios add constraint pk_precios primary key (seminario);
+
+/*tabla de profesores*/
+
+create table profesores (
+						nombre varchar (60) not null primary key,
+                        dni int not null,
+                        email varchar (60) not null, 
+                        clase varchar (60) not null, /*fk*/
+                        tel int not null
+                        );
+                        
+-- creacion de clave foroanea
+alter table profesores add constraint fk1_profesores foreign key (clase)
+references clases (clase); 
+
+/* tabla de seminarios*/ -- en esta tabla tmb hice modificaciones afregue algunos campos y cambien algunas claves 
+
+create table seminarios (
+						seminario varchar (60) not null primary key,
+                        dia varchar (60) not null,
+                        horario time not null,
+                        profesor varchar (60) not null, /*fk*/
+                        precios float not null /*fk2*/
+                        );
+                        
+-- creacion de claves foraneas de seminarios
+alter table seminarios add constraint fk1_seminarios foreign key (profesor)
+references profesores (nombre);
+
+alter table seminarios add constraint fk2_seminarios foreign key (precios)
+references precios (seminario); 
+
+/*tabla de alumnos*/ -- aca hice el agregado del campo abono
+
+create table alumnos (
+					nombre varchar (60) not null primary key,
+                    dni int not null,
+                    tel varchar (60) not null,
+                    email varchar (60) not null,
+                    abono float not null, /*fk1*/
+                    clase varchar (60) not null, /*fk2*/
+                    profesor varchar (60) not null /*fk3*/
+                    );
+                    
+-- creacion claves foraneas de alumnos
+
+/*alter table alumnos add constraint fk1_alumnos foreign key (abono)
+references precios (abono); */
+ alter table alumnos add constraint fk2_alumnos foreign key (clase)
+ references clases (clase);
+ alter table alumnos add constraint fk3_alumnos foreign key (profesor)
+ references profesores (nombre);
