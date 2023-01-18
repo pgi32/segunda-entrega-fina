@@ -1,0 +1,30 @@
+use club_de_la_mortal;
+
+-- para ver que tipo de clases hay
+
+create view tipo_de_clases as
+select * from clases;
+
+-- esta vista es para ver que clase da cada profesor
+ 
+ create or replace view profes as
+ (select nombre, clase from profesores);
+
+-- esta vista es para saber que profe o prfes (pongo en plural porque deberia agregar mas datos de clases y profes) dan verticales
+
+create or replace view tipo_de_clase as
+(select clase, profesor
+from clases
+where clase like "%verticales%");
+
+-- esta es una vista para er que clases hacen los alumnos
+
+create or replace view alumno_clase as
+(select nombre, clase
+from alumnos);
+
+-- vista para ver la el dia y precio de un seminario
+
+create or replace view seminaro as
+(select dia, precios
+from seminarios);
