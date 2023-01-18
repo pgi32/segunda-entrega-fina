@@ -1,0 +1,43 @@
+-- Ester trigger es l creacion de un nuevo seminario y los datos del mismo 
+create table nuevo_seminario (
+						seminario varchar (60) not null primary key,
+                        dia varchar (60) not null,
+                        horario time not null,
+						profesor varchar (60) not null
+                        );
+                        
+insert into seminarios (seminario, dia, horario, precio)
+values ("giros de piso", sabado, "Lucia", 4000);
+
+delimiter $$
+create trigger tr_insert_nuevo_seminario_after
+after insert on seminarios
+for each row 
+begin
+	insert into nuevo_seminario (seminario, dia, horario, profesro)
+    values (new.seminario, new.dia, new.horario, new. prof);
+end
+$$;
+
+
+-- este trigger es before y consiste en la actualizacion del precio del seminario
+ 
+ create table nuevos_precios (
+								abono float not null,
+                                clase suelta float not null,
+                                seminario float not null
+                                );
+ update precios
+ set seminario = "4000";
+ 
+ 
+ delimiter $$
+ create trigger tr_nuevos_precios_before 
+ before update on precios
+ for each row
+ begin
+	insert into nuevos_precios (abono, clase_suelta, seminario)
+    values (new.abono, new.clase_suelta, new.seminario);
+end
+
+$$;
