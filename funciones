@@ -1,0 +1,28 @@
+use club_de_la_mortal;
+-- esta primera funcion sumaria los precios de un seminario y un abono
+
+delimiter $$
+create function abono_y_seminario (abono_1_clase float, seminario float)
+returns float 
+deterministic
+begin
+declare total float;
+set total = (abono_1_clase + seminario);
+return total;
+end
+$$;
+ 
+ -- esta funcion me daria que clases hay los martes 
+ 
+delimiter $$
+
+create function clases_martes (clase int, dia int)
+returns varchar (60)
+deterministic
+begin
+
+return "verticales";
+
+end
+
+$$;
